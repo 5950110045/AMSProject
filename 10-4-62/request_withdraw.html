@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<script type="text/javascript" src="../js/jquery-2.0.2.js" ></script>
+<script type="text/javascript" src="../js/insertitemvalidation.js" ></script>
+<script type="text/javascript" src="../js/unitvalidation.js" ></script>
+<script type="text/javascript" src="../js/typevalidation.js" ></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="page" class="container">
+	<div id="header">
+		<div id="logo">
+			<img src="#" alt="" style="width:70px" /><br>
+			<a href="https://eds.trang.psu.ac.th/mis/supply/stock" style="font-size:12pt">ระบบจัดการพัสดุ</a><br>
+			<span><a href="https://eds.trang.psu.ac.th/mis/supply/stock" rel="nofollow" style="font-size:10pt">Article Management System</a></span>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href='../staff/list_inventory.html' accesskey='1' title=''>รายการพัสดุ<br><span class='enrightlink'> Inventory List</span></a></li>
+				<li class="current_page_item"><a href='../staff/request_withdraw.html' accesskey='2' title=''>ขอเบิกพัสดุ<br><span class='enrightlink'>Request Article</span></a></li>
+				<li><a href='../staff/list_request.html' accesskey='3' title=''>รายการการขอเบิกพัสดุ<br><span class='enrightlink'>My Request Article List</span></a></li>
+				<li><a href="../login/login.html"  onclick="return confirm('ยืนยันการออกจากระบบ')" accesskey="4" title="">ออกจากระบบ<br><span class="enrightlink">Log out</span></a></li>
+				
+			</ul>
+		</div>
+		
+		
+	</div>
+<style>
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #bbbbbb; /* If you want dots under the hoverable text */
+	
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    /*width: */
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 0px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+</style>
+
+	<div style='background-color:#2980b9;text-align:right; padding-right:10px; font-color:#ffffff; height:25px; font-size:10pt; padding-top:10px;'><span style="color:#ffffff">Welcome คุณ  is </span>  
+	<a href="https://eds.trang.psu.ac.th/mis/staffs/"><span class="enrightlink">[Staff Menu]</span></a>
+	<a href="https://eds.trang.psu.ac.th/mis/supply/stock/index.php/welcome/logoutuser" ><span class="enrightlink">[Log out]</span></a>
+	<a href='https://eds.trang.psu.ac.th/mis/supply/stock/images/UDoc_Officer.pdf'><span class='enrightlink'>[Help]</span></a>	</div>
+
+<div id="main" style="height:100%">
+
+		<div id="banner" style="background:url('https://eds.trang.psu.ac.th/mis/supply/stock/images/bktitle.jpg') right; height:90px">
+			<div class="title" style="padding-top:25px">
+				<h2>ระบบจัดการพัสดุ</h2>
+				<span class="byline">Article Management System</span>
+			</div>
+		</div>
+		
+<div class="featured" > 
+<script type="text/javascript">
+
+		$(function() {
+		   $( "#datepicker" ).datepicker();
+		});
+
+		$(document).ready(function(){
+				$( "#req_staff" ).change(function () {
+					var str = ""; var sstr = "";
+					$( "#req_staff option:selected" ).each(function() {
+					  str += $( this ).val() + " ";
+					});
+					sstr = str.split("_");
+					if( sstr[0] != "xxx"){
+						
+						$( "#position" ).text( "..."+sstr[1]+"..." );
+						$( "#inunit" ).text( "..."+sstr[2]+"..." );
+						$( "#signature" ).text( sstr[4]+" "+sstr[5] );
+						$( "#orderer" ).text( sstr[3]+sstr[4]+" "+sstr[5] );
+						$( "#staff_id" ).val( sstr[0]) ;
+					}
+				  })
+				  .change();
+
+				  $( "#itemtype" ).change(function () {
+					var str = ""; var sstr = "";
+					$( "#itemtype option:selected" ).each(function() {
+					  str = $( this ).val();
+					});
+							 $.ajax({
+								 type: "POST",
+								 url:  "https://eds.trang.psu.ac.th/mis/supply/stock/index.php/staffrequest/selectType", 
+								 data: {itemtype : str},
+								 dataType: "text",  
+								 cache:false,
+								 success: 
+									  function(data){
+										$('#itemcode').html(data);
+									  }
+							 });
+							 return false;
+				
+					})
+				  .change();
+
+				$("#selectitem" ).click(function () {
+					var item = "";
+					$( "#itemcode option:selected" ).each(function() {
+					  item = $( this ).val();
+					});
+					var i = $("#listitem tbody tr").length;
+					i++;
+					
+					
+					$("#showtotal").val(i) ;
+						 $.ajax({
+								 type: "POST",
+								 url:  "https://eds.trang.psu.ac.th/mis/supply/stock/index.php/staffrequest/selectItem", 
+								 data: {itemcode : item, norow : i},
+								 dataType: "text",  
+								 cache:false,
+								 success: 
+									  function(data){
+									// alert(data);
+										var liststr = "";
+										liststr += "<tr><td style='border-top: #555555 dotted 1px;border-right: #555555 dotted 1px;height:30px;width:60px'>";
+										liststr += i+"</td>";
+										liststr += data;
+										liststr += "</tr>";
+										
+										$(liststr).appendTo('#listitem tbody'); 
+									  }
+							 });
+							 return false; 
+					
+				});
+
+		});
+
+		function dellist(i,obj){
+			var conf = confirm("ต้องการลบหรือไม่");
+			if(conf){
+				$(obj).parent().parent().remove();
+				//$("#showtotal").val(numrow());
+			}
+
+		}
+
+	//	function numrow(){
+	//		return $("#listitem tbody tr").length;
+	//	}
+</script>
+
+<form action="https://eds.trang.psu.ac.th/mis/supply/stock/index.php/staffrequest" method="post" accept-charset="utf-8"><div style=" font-size:10pt; border: #333333 solid 1px; padding:10px 20px 10px 20px">
+	<p  style="text-align:right;"><span>(NO.) เลขที่...........</span></p>
+	<p style="text-align:center; font-weight: bold; font-size:11pt">ใบเบิกวัสดุ (MATERIALS ORDER  LIST)<br> องค์การบริหารส่วนตำบลไม้ฝาด จ.ตรัง ( Maifad Subdistrict Administration TRANG)</p>
+	<p style="text-align:right">(Date) วันที่...... เดือน........ พ.ศ........<p/>
+	<p style="">เรียน  เจ้าหน้าที่พัสดุ (Dear Materials Staff)<p/>
+	<p style=""> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ข้าพเจ้า (Name)<span> 
+	<input type="text" id="staff_id" name="staff_id" style="display:none" />...<span id="position" style="color:blue">
+	องค์การบริหารส่วนตำบลไม้ฝาด จ.ตรัง มีความประสงค์จะขอเบิกวัสดุตามรายการข้างล่างนี้  เพื่อนำไปใช้ในงานราชการที่ (would like to order materials based on the following list)<input type="text" name="use_at" id="use_at" style="width:380px; background:#f4e897" /> 
+	<span style="color:red;font-size:18pt">*</span>
+	ต้องการมารับวัสดุทั้งหมดในวันที่  <input type="text" id="datepicker"  name="datepicker" style="background:#f4e897">
+	<span style="color:red;font-size:18pt">*</span>
+<p/>
+	<fieldset>
+		<table style="width:100%">
+			<tr><td style="text-align:left;  font-weight:bold">
+					เลือกประเภทวัสดุ :	
+						<select id="itemtype" name="itemtype" style="background:#f4e897">
+							<option value="xxx">==ประเภทวัสดุ==</option>
+							<option value=001>กระดาษถ่ายเอกสาร Copy Paper</option>	<option value=002>กระดาษการ์ดชนิดหนา Cardstock Paper</option>	<option value=003>กระดาษครุฑ เอ 4 Garuda paper A4</option>	<option value=004>กระดาษบันทึกข้อความ Note paper</option>	<option value=005>กระดาษต่อเนื่อง Continuous Feed Paper</option>	<option value=006>กระดาษไขมาสเตอร์ Waxed paoper</option>	<option value=007>กระดาษคาร์บอน Carbon paper</option>	<option value=009>ใบเสร็จรับเงิน Receipt</option>	<option value=010>กระดาษคำตอบ Answer Sheet</option>	<option value=011>กรรไกร Scissor</option>	<option value=012>กาว Glue</option>	<option value=013>ครีมนับกระดาษ Gatherette</option>	<option value=014>คลิปหนีบกระดาษ Paperclip</option>	<option value=015>เชือกฟาง Plastic rope</option>	<option value=016>ซอง Envelope</option>	<option value=017>ดินสอ Pencil</option>	<option value=018>ตรายาง Rubber stamp</option>	<option value=019>ตะแกรงใส่เอกสาร Document tray</option>	<option value=020>ตะกร้าพลาสติก Plastic bin</option>	<option value=021>ถ่านไฟฉาย Battery</option>	<option value=022>แถบบันทึกเสียง  60 mins</option>	<option value=023>แถบวีดีโอเปล่า Vedeo gape</option>	<option value=024>ที่เย็บกระดาษ Stapler</option>	<option value=025>ที่ถอดลวดเย็บกระดาษ Stick off staple</option>	<option value=026>ที่เจาะกระดาษ Hole punches</option>	<option value=027>ที่เหลาดินสอ Pencil shrpener</option>	<option value=028>แท่นตัดสก็อตเทป Stand of tape</option>	<option value=029>แท่นประทับตรายาง Stamp pad</option>	<option value=030>เทปกาว Glue tape</option>	<option value=031>เทปใส Transparent tape</option>	<option value=032>เทปกาว 2 หน้า Double-side tissue tape</option>	<option value=033>เทปติดสันหนังสือ Cloth tape </option>	<option value=034>น้ำยาลบคำผิด Correction fluid</option>	<option value=035>ใบมีดคัทเตอร์ Papar cutter</option>	<option value=036>ปากกาเมจิก CalligraphicMarker</option>	<option value=037>ปากกาเขียนไวท์บอร์ด White Board Pen</option>	<option value=038>ปากกาเขียนไวท์บอร์ด สีแดง White Board Pen (Red)</option>	<option value=039>ปากกาเขียนไวท์บอร์ด สีดำWhite Board Pen (Black) </option>	<option value=040>ปากกาเขียนแผ่นใส Marker for Projector Water Soluble Ink</option>	<option value=041>เป๊กหมุดหัวร่ม Thumbtack</option>	<option value=042>แผ่นดิส DISK</option>	<option value=043>แผ่นใส Transaprency Film</option>	<option value=044>แฟ้ม File</option>	<option value=045>ไม้บรรทัด Ruler</option>	<option value=046>มีดคัทเตอร์ Cutter</option>	<option value=047>ยางลบอ่อน Eraser</option>	<option value=048>ลวดเสียบกระดาษ Paper Clip</option>	<option value=049>ลวดเย็บกระดาษ Staple</option>	<option value=050>สมุด Paperbook</option>	<option value=051>สติกเกอร์ Sticker</option>	<option value=052>หมึกเติมแท่นประทับ Refill-ink for Rubber Stamp</option>	<option value=053>หมึกเครื่องพิมพ์ Ink and Toner</option>	<option value=054>ผ้าหมึก Ribbon</option>	<option value=055>อะไหล่แฟ้ม ลิ้นแฟ้ม Fastener</option>	<option value=056>อินเด็กซ์แฟ้ม Index File Folder</option>	<option value=057>แผ่นซีดี CD</option>	<option value=065>กล่องใส่แผ่นซีดี CD-R BOX</option>	<option value=067>วัสดุงานบ้านงานครัว Kitchen supplies</option>	<option value=068>แผ่นดีวีดี DVD</option>	<option value=069>หมึกพิมพ์ HP83 A</option>	<option value=070>หมึกพิมพ์ Fuji Xerox MP265z</option>	<option value=071>หมึกเครื่องพิมพ์</option>	<option value=072>หมึกพิมพ์ HP98A</option>							</select> <span style="color:red;font-size:18pt">*</span>
+					เลือกวัสดุ :	<span id="msg"></span>
+						<select id="itemcode" name="itemcode" style="background:#f4e897">
+							<option value="xxx">==วัสดุ==</option>
+							<option></option>					
+						</select> <span style="color:red;font-size:18pt">*</span>
+				<input type="button" value="Select" id="selectitem" />
+				</td></tr>
+		</table>
+	</fieldset>
+	<br>
+	<table id="listitem" style="width:100%; border: #555555 dotted 1px;text-align:center" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+			<td style="height:30px;border-right: #555555 dotted 1px;width:60px;height:40px">ลำดับที่ <br> (NO.)</td>
+			<td style="border-right: #555555 dotted 1px;width:80px">รหัสวัสดุ<br> ( Code)</td>
+			<td style="border-right: #555555 dotted 1px;width:200px">รายการวัสดุ<br> (Item)</td>
+			<td style="border-right: #555555 dotted 1px;width:80px">จำนวน <br>(Quantity)</td>
+			<td style="width:100px;border-right: #555555 dotted 1px;width:80px">หน่วย <br>(Unit)</td>
+			<td style="width:100px;border-right: #555555 dotted 1px;width:100px">การคืนซาก<br>(Returning)</td>
+			<td style="width:50px"></td>
+			</tr>
+		</thead> 
+		<tbody>
+			
+		</tbody>
+	</table>
+	<input id="showtotal" name="showtotal" type="text" style="display:none" />
+	
+	<br>
+	<table style="width:100%">
+		<tr>
+			<td style="width:50%; vertical-align:top">
+				<p>1)	ข้าพเจ้าขอรับรองว่า วัสดุที่ขอเบิกไปนี้นำไปใช้ในงานราชการเท่านั้น<br> ( I certify that the materials I ordered are used for
+The governmental task only.)</p>
+				<p style="text-align:center">
+				      (ลงชื่อ) (Signature).....<span id="signature" style="color:blue"></span>.....<br>ผู้ขอเบิก (Orderer)
+                 (…<span id="orderer" style="color:blue"></span>…)<br>
+      (ลงชื่อ) (Signature)<br>เจ้าหน้าที่พัสดุ (Materials Staff)
+                  (………………  (12)…………………………………)
+				</p>
+			</td>
+			<td style="vertical-align:top">
+				<p>2)	ข้าพเจ้าได้จ่ายของตามรายการที่ขอเบิกให้แล้ว (I have already provided the materials I ordered.)</p>
+				<p style="text-align:center">(ลงชื่อ) (Signature/)………<br>ผู้จ่ายของ (Provider)(…………………………………</p>
+				<p>3)	ข้าพเจ้าได้ตรวจรับสิ่งของที่ขอเบิกแล้วตามรายการที่ได้รับเบิกจ่าย ( I have already received the materials I ordered.)</p>
+				<p style="text-align:center">(ลงชื่อ) (Signature)………(13)………<br>ผู้รับของ(Receiver) (………………(14)……………………)</p>
+			</td>
+		</tr>
+		
+	</table>
+	
+</div>
+<p style="text-align:right; padding-right:10px; padding-top:10px">
+		<input type="submit" name="addreq" id="addreq" value="-------ยืนยันการส่งคำร้องขอเบิกวัสดุ------"/></p>
+</form></div>
+
+	<div id="copyright">
+			<span>Copyright (c) 2019 Apiwat Kongsap
+			<span>Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</span>
+		</div>
+	</div>
+</div>
+</body>
+</html>

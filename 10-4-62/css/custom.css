@@ -1,0 +1,652 @@
+	html, body
+	{
+		height: 100%;
+	}
+	
+	body
+	{
+		margin: 0px;
+		padding: 0px;
+		background: #eeeeee;
+		font-family: tahoma;
+		font-size: 10pt;
+		font-weight: 300;
+		color: #444444;
+	}
+	
+
+	h1, h2, h3
+	{
+		margin: 0;
+		padding: 0;
+		font-weight: bold;
+		color: #333333;
+	
+	}
+        #table{
+            font-family: tahoma;
+            font-size: 10pt;
+        
+        }
+	
+	p, ol, ul
+	{
+		margin-top: 0;
+	}
+	
+	ol, ul
+	{
+		padding: 0;
+		list-style: none;
+	}
+	
+	p
+	{
+		line-height: 180%;
+	}
+	
+	strong
+	{
+	}
+	.texten{
+		color: #888888;
+		font-size: 8pt;
+		
+	}
+	.txterror{
+		color: #d21325;
+		font-size:9pt;
+	}
+	a
+	{
+		color: #f97f0c;
+	}
+	
+	a:hover
+	{
+		text-decoration: none;
+	}
+	
+	.container
+	{
+		overflow: hidden;
+		margin: 0em auto;
+		width: 1200px;
+	}
+
+	.header{
+		font-family: tahoma;
+		font-size: 10pt;
+		font-weight: bold;
+	}
+	
+/*********************************************************************************/
+/* Image Style                                                                   */
+/*********************************************************************************/
+
+	.image
+	{
+		display: inline-block;
+	}
+	
+	.image img
+	{
+		display: block;
+		width: 100%;
+	}
+	
+	.image-full
+	{
+		display: block;
+		width: 100%;
+		margin: 0 0 2em 0;
+	}
+	
+	.image-left
+	{
+		float: left;
+		margin: 0 2em 2em 0;
+	}
+	
+	.image-centered
+	{
+		display: block;
+		margin: 0 0 2em 0;
+	}
+	
+	.image-centered img
+	{
+		margin: 0 auto;
+		width: auto;
+	}
+
+/*********************************************************************************/
+/* List Styles                                                                   */
+/*********************************************************************************/
+
+	ul.style1
+	{
+		margin: 0 auto;
+		padding: 0;
+		width: 100%;
+		overflow: hidden;
+		list-style: none;
+		text-align: left;
+		color: #6c6c6c;
+                font-family:tahoma;
+                font-size:10pt;
+	}
+	
+	ul.style1 li
+	{
+		padding: 5px 5px 5px 5px;
+		/*margin: 0 0 2.5em 0;*/
+		border-top: 1px solid rgba(0,0,0,.1); 
+	}
+	
+	ul.style1 li:first-child
+	{
+		border-top: none;
+	}
+	
+	ul.style1 p
+	{
+		margin: 0;
+	}
+	
+	ul.style1 a
+	{
+		display: block;
+		text-decoration: none;
+		color: #2D2D2D;
+	}
+	
+	ul.style1 a:hover
+	{
+		text-decoration: underline;
+	}
+	
+	ul.style1 h3
+	{
+		padding: 1em 0em 5px 0em;
+		text-transform: uppercase;
+		font-size: 1em;
+		font-weight: 400;
+	}
+	
+	ul.style1 .first
+	{
+		padding-top: 0;
+		background: none;
+	}
+	
+	ul.style1 .date
+	{
+		float: left;
+		position: relative;
+		width: 150px;
+		height: 30px;
+		margin: 5px 5px 5px 5px;
+		padding: 5px 5px 5px 5px;
+		/*box-shadow: 0px 0px 0px 5px rgba(255,255,255,0.1);*/
+		line-height: normal;
+		text-align: center;
+		text-transform: uppercase;
+		/*text-shadow: 0px 1px 0px rgba(0,0,0,.2);*/
+		font-size: 10pt;
+		font-weight: 300;
+		border-right: 1px solid rgba(0,0,0,.1); 
+	}
+	
+	ul.style1 .date:after
+	{
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 6px;
+	}
+	
+	ul.style1 .date b
+	{
+		margin: 0;
+		padding: 0;
+		display: block;
+		margin-top: -5px;
+		font-size: 1.1em;
+		font-weight: 600;
+	}
+	
+	ul.style1 .date a
+	{
+	}
+	
+	ul.style1 .date a:hover
+	{
+		text-decoration: none;
+	}
+
+
+/*********************************************************************************/
+/* Social Icon Styles                                                            */
+/*********************************************************************************/
+
+	ul.contact
+	{
+		margin: 0;
+		padding: 2em 0em 0em 0em;
+		list-style: none;
+	}
+	
+	ul.contact li
+	{
+		display: inline-block;
+		padding: 0em 0.30em;
+		font-size: 1em;
+	}
+	
+	ul.contact li span
+	{
+		display: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	ul.contact li a
+	{
+		color: #FFF;
+	}
+	
+	ul.contact li a:before
+	{
+		display: inline-block;
+		background: #3f3f3f;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 20px;
+		text-align: center;
+		color: #FFFFFF;
+	}
+	
+	ul.contact li a.icon-twitter:before { background: #2DAAE4; }
+	ul.contact li a.icon-facebook:before { background: #39599F; }
+	ul.contact li a.icon-dribbble:before { background: #C4376B;	}
+	ul.contact li a.icon-tumblr:before { background: #31516A; }
+	ul.contact li a.icon-rss:before { background: #F2600B; }
+
+/*********************************************************************************/
+/* Button Style                                                                  */
+/*********************************************************************************/
+
+	.button
+	{
+		display: inline-block;
+		padding: 1em 3em 1em 2em;
+		letter-spacing: 0.20em;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 400;
+		font-size: 0.90em;
+		color: #FFF;
+	}
+	
+	.button:before
+	{
+		display: inline-block;
+		background: #FFC31F;
+		margin-right: 1em;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 20px;
+		text-align: center;
+		color: #272925;
+	}
+		
+/*********************************************************************************/
+/* 4-column                                                                      */
+/*********************************************************************************/
+
+	.box1,
+	.box2,
+	.box3,
+	.box4
+	{
+		width: 235px;
+	}
+	
+	.box1,
+	.box2,
+	.box3,
+	{
+		float: left;
+		margin-right: 20px;
+	}
+	
+	.box4
+	{
+		float: right;
+	}
+	
+/*********************************************************************************/
+/* 3-column                                                                      */
+/*********************************************************************************/
+
+	.boxA,
+	.boxB,
+	.boxC
+	{
+		width: 320px;
+	}
+
+	.boxA,
+	.boxB,
+	{
+		float: left;
+		margin-right: 20px;
+	}
+	
+	.boxC
+	{
+		float: right;
+	}
+
+/*********************************************************************************/
+/* 2-column                                                                      */
+/*********************************************************************************/
+
+	.tbox1,
+	.tbox2
+	{
+		width: 575px;
+	}
+	
+	.tbox1
+	{
+		float: left;
+	}
+
+	.tbox2
+	{
+		float: right;
+	}
+
+/*********************************************************************************/
+/* Heading Titles                                                                */
+/*********************************************************************************/
+
+	.title
+	{
+		margin-bottom: 5px;
+		text-align:left;
+		/*background-image: url("http://eds.trang.psu.ac.th/mis/supply/stock/images/bktitle.jpg");*/
+	}
+	
+	.title h2
+	{
+		text-transform: lowercase;
+		font-size: 14pt;
+		text-align:left;
+	}
+	
+	.title .byline
+	{
+		font-size: 16pt;
+		color: #6F6F6F;
+	}
+		
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+	#header
+	{
+		position: relative;
+		float: left;
+		width: 300px;
+		padding: 3em 0em;
+		background : #696969;
+	}
+
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+
+	#logo
+	{
+		text-align: center;
+		margin-bottom: 10px;
+		background: #696969;
+	}
+	
+	#logo h1
+	{
+		display: block;
+	}
+	
+	#logo a
+	{
+		text-decoration: none;
+		color:  	#FFFFFF;
+	}
+	
+	#logo span
+	{
+		padding-right: 0.5em;
+		text-transform: uppercase;
+		font-size: 0.90em;
+		color: rgba(255,255,255,0.3);
+	}
+
+	#logo span a
+	{
+		color:  #FFFFFF;
+	}
+	
+	#logo img
+	{
+		display: inline-block;
+		margin-bottom: 1em;
+		border-radius: 50%;
+	}
+
+/*********************************************************************************/
+/* Menu                                                                          */
+/*********************************************************************************/
+
+	#menu
+	{
+	}
+	
+	#menu ul
+	{
+	}
+	
+	#menu li
+	{
+	
+		border-bottom: 1px solid #2679f5;
+	}
+	
+	#menu li a
+	{
+		display: block;
+		padding: 10px 10px;
+		text-align: center;
+		text-decoration:  none;
+		text-transform: uppercase;
+		font-weight: 500;
+		color:  	#FFFFFF;
+		font-size: 12pt;
+	}
+	
+	.enrightlink{
+		text-align: center;
+		text-decoration:  none;
+		text-transform: uppercase;
+		font-weight: 500;
+		color:  #FFFFFF;
+		font-size: 10pt;
+	}
+	
+	.credit{
+		padding-top:10px;
+		padding-left:10px;
+		padding-bottom:10px;
+		margin: 10px 10px 10px 10px;
+		text-align: center;
+		text-transform: uppercase;
+		color: #bbbbbb;
+		font-size: 10pt;
+		background-color: #333333;
+	}
+
+	#menu li:hover a, #menu li.active a, #menu li.active span
+	{
+		color : #000080;
+	}
+	
+	#menu .current_page_item a
+	{
+		background: #f97f0c;
+		color: rgba(255,255,255,1);
+	}
+	
+	
+	#menu .icon
+	{
+	}
+
+/*********************************************************************************/
+/* Banner                                                                        */
+/*********************************************************************************/
+
+	#banner
+	{
+		margin-bottom: 20px;
+	}
+
+	.welcome{
+
+		background-image:url('http://eds.trang.psu.ac.th/mis/supply/stock/images/bktitle.jpg');
+	}
+
+/*********************************************************************************/
+/* Page                                                                          */
+/*********************************************************************************/
+
+	#page
+	{
+		background: #FFFFFF;
+	}
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+	#main
+	{
+		overflow: hidden;
+		float: right;
+		width: 800px;
+		padding: 0px 50px 0px 50px;
+		background: #FFF;
+		border-top: 6px solid #2980b9;
+		text-align: left;
+	}
+
+/*********************************************************************************/
+/* Featured                                                                      */
+/*********************************************************************************/
+
+	#featured
+	{
+		overflow: hidden;
+		margin-bottom: 10px;
+		padding-top: 10px;
+		border-top: 1px solid rgba(0,0,0,0.08);
+	}
+
+/*********************************************************************************/
+/* Sidebar                                                                       */
+/*********************************************************************************/
+
+	#sidebar
+	{
+	}
+
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+
+	#footer
+	{
+	}
+
+/*********************************************************************************/
+/* Copyright                                                                     */
+/*********************************************************************************/
+
+	#copyright
+	{
+		overflow: hidden;
+		padding: 50px 0px 5px 5px;
+		border-top: 1px solid rgba(0,0,0,0.08);
+	}
+	
+	#copyright span
+	{
+		display: block;
+		letter-spacing: 0.20em;
+		line-height: 2.5em;
+		text-align: right;
+		text-transform: uppercase;
+		font-size:5pt;
+		color: rgba(0,0,0,0.7);
+	}
+	
+	#copyright a
+	{
+		text-decoration: none;
+		color: rgba(0,0,0,0.9);
+	}
+
+	.fa
+	{
+		display: block;
+		color: #000;
+		background: red;
+	}
+
+	.subbtn {
+	  background: #999999;
+	 /* background-image: -webkit-linear-gradient(top, #999999, #333333);
+	  background-image: -moz-linear-gradient(top, #999999, #333333);
+	  background-image: -ms-linear-gradient(top, #999999, #333333);
+	  background-image: -o-linear-gradient(top, #999999, #333333);
+	  background-image: linear-gradient(to bottom, #999999, #333333);
+	  -webkit-border-radius: 5;
+	  -moz-border-radius: 5;*/
+	  border-radius: 5px;
+	 /* font-family: Tahoma;*/
+	  color: #ffffff;
+	  font-size: 12px;
+	  padding: 5px 10px 5px 10px;
+	  text-decoration: none;
+	}
+
+	.subbtn:hover {
+	  background: #333333;
+	/*  background-image: -webkit-linear-gradient(top, #333333, #999999);
+	  background-image: -moz-linear-gradient(top, #333333, #999999);
+	  background-image: -ms-linear-gradient(top, #333333, #999999);
+	  background-image: -o-linear-gradient(top, #333333, #999999);
+	  background-image: linear-gradient(to bottom, #333333, #999999);*/
+	  text-decoration: none;
+	}
+
+	v
